@@ -78,4 +78,9 @@ public class TestIndexSlider {
     public void testCancelNewOrder(){
         indexSliderPage.cancelNewOrder();
     }
+    
+    @Test
+    public void testCancelDeleteSlider(){
+        indexSliderPage.cancelDeleteSlider();
+    }
 }

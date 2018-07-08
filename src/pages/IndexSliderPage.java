@@ -28,8 +28,8 @@ public class IndexSliderPage extends Page{
         clickOnElement(By.id("new_indexSlide_submit"));
     }
     
-    private void clickOnCancelButton(){
-        clickOnElement(By.cssSelector("div.panel-heading div.btn-group button.btn.btn-default.active"));
+    private void clickOnCancelDeleteButton(){
+        clickOnElement(By.cssSelector("div.modal-footer button.btn.btn-default"));
     }
     
     private void clickOnEditButton(WebElement row){
@@ -276,6 +276,12 @@ public class IndexSliderPage extends Page{
         clickOnDeleteButton(lastRow);
         clickOnConfirmDeleteButton();
     }
+    
+    public void cancelDeleteSlider(){
+        WebElement lastRow = chooseLastRow();
+        clickOnDeleteButton(lastRow);
+        clickOnCancelDeleteButton();
+    }
 
 // --Save New Order--
 
@@ -288,6 +294,6 @@ public class IndexSliderPage extends Page{
     
     public void cancelNewOrder(){
         clickOnChangeOrder();
-        clickOnCancelButton();
+        clickOnCancel();
     }
 }
