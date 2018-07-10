@@ -44,6 +44,18 @@ public class TestPhotoGalleries {
     }
 
    
-    // @Test
-    // public void hello() {}
+    @Test
+    public void testEditPhotoFirst() {
+        photoGalleriesPage.editFirstPhoto();
+    }
+    
+    @Test
+    public void testEditPhotoRandom(){
+        photoGalleriesPage.editRandomPhoto();
+    }
+    
+    @Test
+    public void testEditPhotoLast(){
+        photoGalleriesPage.editLastPhoto();
+    }
 }

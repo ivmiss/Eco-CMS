@@ -32,12 +32,16 @@ public class IndexSliderPage extends Page{
         clickOnElement(By.cssSelector("div.modal-footer button.btn.btn-default"));
     }
     
+    private void clickOnAddNewIndexSlide(){
+        clickOnElement(By.linkText("Add index Slide"));
+    }
+    
     private void clickOnEditButton(WebElement row){
-        clickOnElement(By.cssSelector("a[title='edit']"));
+        clickOnElement(row.findElement(By.cssSelector("a[title='edit']")));
     }
     
     private void clickOnDisableButton(WebElement row){
-        clickOnElement(By.cssSelector("button[title='disable']"));
+        clickOnElement(row.findElement(By.cssSelector("button[title='disable']")));
     }
     
     private void clickOnConfirmDisableButton(){
@@ -45,7 +49,7 @@ public class IndexSliderPage extends Page{
     }
     
     private void clickOnDeleteButton(WebElement row){
-        clickOnElement(By.cssSelector("button[title='delete']"));
+        clickOnElement(row.findElement(By.cssSelector("button[title='delete']")));
     }
     
     private void clickOnConfirmDeleteButton(){
@@ -62,33 +66,48 @@ public class IndexSliderPage extends Page{
     
 //    --Link Methods--
     
-    private void chooseLinkSelect(String optionValue){
+    private void clickOnLinkSelect(String optionValue){
         clickOnElement(By.cssSelector("#link_type option[value='" + optionValue + "']"));
     }
     
-    private void clickOnNoLinkSelect(){
-        chooseLinkSelect("NoLink");
+    private void clickOnFileForNoLink(){
+        getDriver().findElement(By.id("index_slide_photo")).sendKeys("C:\\Users\\PC\\Desktop\\workspace\\EcoCMS\\Eco-friendly.jpg");
     }
     
-    private void clickOnSitemapPageSelect(){
-        chooseLinkSelect("SitemapPage");
+    private void clickOnFileForSitemapPageLink(){
+        getDriver().findElement(By.id("index_slide_photo")).sendKeys("C:\\Users\\PC\\Desktop\\workspace\\EcoCMS\\Sitemap.jpg");
+    }
+    
+    private void clickOnFileForInternalLink(){
+        getDriver().findElement(By.id("index_slide_photo")).sendKeys("C:\\Users\\PC\\Desktop\\workspace\\EcoCMS\\Internal.jpg");
+    }
+    
+    private void clickOnFileForExternalLink(){
+       getDriver().findElement(By.id("index_slide_photo")).sendKeys("C:\\Users\\PC\\Desktop\\workspace\\EcoCMS\\External.jpg");
+    }
+    
+    private void chooseNoLink(){
+        clickOnLinkSelect("NoLink");
+        clickOnFileForNoLink();
+    }
+    
+    private void chooseSitemapPage(){
+        clickOnLinkSelect("SitemapPage");
         sendTextOnFieldWithClearChoose("link_label");
+        clickOnFileForSitemapPageLink();
     }
     
-    private void clickOnInternalLinkSelect(){
-        chooseLinkSelect("InternalLink");
+    private void chooseInternalLink(){
+        clickOnLinkSelect("InternalLink");
         sendTextOnFieldWithClearChoose("link_label");
+        clickOnFileForInternalLink();
     }
     
-    
-    private void clickOnExternalLinkSelect(){
-        chooseLinkSelect("ExternalLink");
+    private void chooseExternalLink(){
+        clickOnLinkSelect("ExternalLink");
         sendTextOnFieldWithClearLabel(("link_label"));
         sendTextOnFieldUrl(By.id("external_link_url"));
-    }
-
-    private void chooseFile(){
-       getDriver().findElement(By.id("index_slide_photo")).sendKeys("C:\\Users\\PC\\Desktop\\workspace\\EcoCMS\\Eco-friendly.jpg");
+        clickOnFileForExternalLink();
     }
 
 //    --Table Methods--
@@ -148,92 +167,87 @@ public class IndexSliderPage extends Page{
         sendTextOnFieldWithClearChoose("title");
         sendTextOnFieldWithClearChoose("description");
     }
+    
+    private void commonAddNewIndexSlide(){
+        clickOnAddNewIndexSlide();
+        sendTextOnFieldWithClearChoose("title");
+        sendTextOnFieldWithClearChoose("description");
+    }
+    
 //    --PUBLIC METHODS--
     
 //    --FirstSlider--
     public void editFirstSliderWithNoLink(){
         commonEditFirstSlider();
-        clickOnNoLinkSelect();
-        chooseFile();
+        chooseNoLink();
         clickOnSaveButton();
     }
      
     public void editFirstSliderWithSitemapPageLink(){
         commonEditFirstSlider();
-        clickOnSitemapPageSelect();
-        chooseFile();
+        chooseSitemapPage();
         clickOnSaveButton();
     }
     
     public void editFirstSliderWithInternalLink(){
         commonEditFirstSlider();
-        clickOnInternalLinkSelect();
-        chooseFile();
+        chooseInternalLink();
         clickOnSaveButton();
     }
     
     public void editFirstSliderWithExternalLink(){
         commonEditFirstSlider();
-        clickOnExternalLinkSelect();
-        chooseFile();
+        chooseExternalLink();
         clickOnSaveButton();
     }
     
 //    --RandomSlider--
     public void editRandomSliderWithNoLink(){
         commonEditRandomSlider();
-        clickOnNoLinkSelect();
-        chooseFile();
+        chooseNoLink();
         clickOnSaveButton();
     }
     
     public void editRandomSliderWithSitemapPageLink(){
         commonEditRandomSlider();
-        clickOnSitemapPageSelect();
-        chooseFile();
+        chooseSitemapPage();
         clickOnSaveButton();
     }
     
     public void editRandomSliderWithInternalLink(){
         commonEditRandomSlider();
-        clickOnInternalLinkSelect();
-        chooseFile();
+        chooseInternalLink();
         clickOnSaveButton();
     }
     
     public void editRandomSliderWithExternalLink(){
         commonEditRandomSlider();
-        clickOnExternalLinkSelect();
-        chooseFile();
+        chooseExternalLink();
         clickOnSaveButton();
     }
     
 //    --LastSlider--
     public void editLastSliderWithNoLink(){
         commonEditLastSlider();
-        clickOnNoLinkSelect();
-        chooseFile();
+        chooseNoLink();
         clickOnSaveButton();
     }
     
     public void editLastSliderWithSitemapPageLink(){
         commonEditLastSlider();
-        clickOnSitemapPageSelect();
-        chooseFile();
+        chooseSitemapPage();
         clickOnSaveButton();
     }
 
     public void editLastSliderWithInternalLink(){
         commonEditLastSlider();
-        clickOnInternalLinkSelect();
-        chooseFile();
+        chooseInternalLink();
         clickOnSaveButton();
     }
 
     public void editLastSliderWithExternalLink(){
         commonEditLastSlider();
-        clickOnExternalLinkSelect();
-        chooseFile();
+        chooseExternalLink();
         clickOnSaveButton();
     }
 
@@ -296,4 +310,31 @@ public class IndexSliderPage extends Page{
         clickOnChangeOrder();
         clickOnCancel();
     }
+
+// --AddNewSlide Mwthods--
+
+    public void addNewIndexSlideWithNoLink(){
+        commonAddNewIndexSlide();
+        chooseNoLink();
+        clickOnSaveButton();
+    }
+    
+    public void addNewIndexSlideWithSitemapPageLink(){
+        commonAddNewIndexSlide();
+        chooseSitemapPage();
+        clickOnSaveButton();
+    }
+    
+    public void addNewIndexSlideWithInternalLink(){
+        commonAddNewIndexSlide();
+        chooseInternalLink();
+        clickOnSaveButton();
+    }
+    
+    public void addNewIndexSlideWithExternalLink(){
+        commonAddNewIndexSlide();
+        chooseExternalLink();
+        clickOnSaveButton();
+    }
+    
 }

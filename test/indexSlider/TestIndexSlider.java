@@ -50,7 +50,7 @@ public class TestIndexSlider {
     }
 
     @Test
-    public void testEditLastSliderWithIntrnalLink(){
+    public void testEditLastSliderWithInternalLink(){
         indexSliderPage.editLastSliderWithInternalLink();
     }
     
@@ -82,5 +82,25 @@ public class TestIndexSlider {
     @Test
     public void testCancelDeleteSlider(){
         indexSliderPage.cancelDeleteSlider();
+    }
+    
+    @Test
+    public void testAddNewIndexSlideWithExternalLink(){
+        indexSliderPage.addNewIndexSlideWithExternalLink();
+    }
+    
+    @Test
+    public void testAddNewIndexSliderWithInternalLink(){
+        indexSliderPage.addNewIndexSlideWithInternalLink();
+    }
+    
+    @Test
+    public void testEditLastSlideWithSitemapPage(){
+        indexSliderPage.editLastSliderWithSitemapPageLink();
+    }
+    
+    @Test
+    public void testEditLastSlideWithNoLinkPage(){
+        indexSliderPage.editLastSliderWithNoLink();
     }
 }
